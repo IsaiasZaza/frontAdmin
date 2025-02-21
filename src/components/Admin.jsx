@@ -23,12 +23,11 @@ const Admin = () => {
         const token = localStorage.getItem('token');
 
         if (!token) {
-            router.push('/login');
+            router.push('/');
             return;
         }
 
-        // Faz a requisição para a rota protegida enviando o token no header Authorization
-        fetch('http://localhost:3000/admin', {
+        fetch('https://admin-adam.vercel.app/admin', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,8 +36,7 @@ const Admin = () => {
         })
             .then(async (res) => {
                 if (!res.ok) {
-                    // Se o token for inválido ou estiver expirado, redireciona para login
-                    router.push('/login');
+                    router.push('/');
                 } else {
                     const json = await res.json();
                     setData(json);
@@ -46,7 +44,7 @@ const Admin = () => {
             })
             .catch((err) => {
                 console.error(err);
-                router.push('/login');
+                router.push('/');
             });
     }, [router]);
 
@@ -67,12 +65,12 @@ const Admin = () => {
             const token = localStorage.getItem("token");
 
             if (!token) {
-                window.location.href = "/login";
+                window.location.href = "/";
                 return;
             }
 
             try {
-                const response = await fetch(`http://localhost:3002/api/users`, {
+                const response = await fetch(`https://crud-usuario.vercel.app/api/users`, {
                     method: "GET",
                 });
 

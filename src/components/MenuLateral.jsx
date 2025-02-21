@@ -21,7 +21,7 @@ const MenuLateral = ({ children }) => {
   const handleLogout = () => {
     try {
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      window.location.href = "/";
     } catch (error) {
       console.error("Erro ao realizar logout:", error);
     }

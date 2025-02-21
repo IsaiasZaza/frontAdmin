@@ -11,12 +11,11 @@ export default function AdminTela() {
         const token = localStorage.getItem('token');
 
         if (!token) {
-            router.push('/login');
+            router.push('/');
             return;
         }
 
-        // Faz a requisição para a rota protegida enviando o token no header Authorization
-        fetch('http://localhost:3000/admin', {
+        fetch('https://admin-adam.vercel.app/admin', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,8 +24,7 @@ export default function AdminTela() {
         })
             .then(async (res) => {
                 if (!res.ok) {
-                    // Se o token for inválido ou estiver expirado, redireciona para login
-                    router.push('/login');
+                    router.push('/');
                 } else {
                     const json = await res.json();
                     setData(json);
@@ -34,7 +32,7 @@ export default function AdminTela() {
             })
             .catch((err) => {
                 console.error(err);
-                router.push('/login');
+                router.push('/');
             });
     }, [router]);
 

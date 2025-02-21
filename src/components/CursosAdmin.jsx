@@ -45,12 +45,12 @@ export default function CursosAdmin() {
         const token = localStorage.getItem('token');
 
         if (!token) {
-            router.push('/login');
+            router.push('/');
             return;
         }
 
         // Requisição para rota protegida com token
-        fetch('http://localhost:3000/admin', {
+        fetch('https://admin-adam.vercel.app/admin', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export default function CursosAdmin() {
         })
             .then(async (res) => {
                 if (!res.ok) {
-                    router.push('/login');
+                    router.push('/');
                 } else {
                     const json = await res.json();
                     setData(json);
@@ -67,7 +67,7 @@ export default function CursosAdmin() {
             })
             .catch((err) => {
                 console.error(err);
-                router.push('/login');
+                router.push('/');
             });
     }, [router]);
 
@@ -76,7 +76,7 @@ export default function CursosAdmin() {
             try {
                 const token = localStorage.getItem("token");
                 if (!token) {
-                    window.location.href = "/login";
+                    window.location.href = "/";
                     return;
                 }
                 const response = await fetch("https://crud-usuario.vercel.app/api/cursos");
@@ -125,7 +125,7 @@ export default function CursosAdmin() {
     // Função para adicionar curso com subcursos
     const handleAddCursoWithSubcourses = async () => {
         try {
-            const response = await fetch("http://localhost:3001/api/courses", {
+            const response = await fetch("https://crud-usuario.vercel.app/api/courses", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export default function CursosAdmin() {
 
     const handleAddParentCurso = async () => {
         try {
-            const response = await fetch("http://localhost:3001/api/courses", {
+            const response = await fetch("https://admin-adam.vercel.app/api/courses", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
