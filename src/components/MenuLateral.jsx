@@ -78,7 +78,6 @@ const MenuContent = ({ handleLogout }) => (
     <ul className="space-y-6 px-4 flex-1 pt-56">
       <MenuItem href="/admin" icon={<FaUser />} text="Lista de Alunos" />
       <MenuItem href="/cursosAdmin" icon={<FaBook />} text="Cursos Admin" />
-      <MenuItem href="/ebookAdmin" icon={<FaBook />} text="Ebook Admin" />
     </ul>
 
     {/* Botão de logout */}
