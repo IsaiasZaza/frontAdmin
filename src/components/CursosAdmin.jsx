@@ -79,7 +79,7 @@ export default function CursosAdmin() {
                     window.location.href = "/";
                     return;
                 }
-                const response = await fetch("https://crud-usuario.vercel.app/api/cursos");
+                const response = await fetch("https://api-only-mu.vercel.app/api/cursos");
                 if (!response.ok) throw new Error("Erro ao buscar cursos");
                 const data = await response.json();
                 // Exibe somente cursos principais (sem parentCourseId)
@@ -95,7 +95,7 @@ export default function CursosAdmin() {
     const handleEditCurso = async () => {
         if (!selectedCurso) return;
         try {
-            const response = await fetch(`https://crud-usuario.vercel.app/api/curso/${selectedCurso.id}`, {
+            const response = await fetch(`https://api-only-mu.vercel.app/api/curso/${selectedCurso.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export default function CursosAdmin() {
 
     const handleDeleteCurso = async (id) => {
         try {
-            await fetch(`https://crud-usuario.vercel.app/api/curso/${id}`, { method: "DELETE" });
+            await fetch(`https://api-only-mu.vercel.app/api/curso/${id}`, { method: "DELETE" });
             setCursos((prevCursos) => prevCursos.filter((curso) => curso.id !== id));
         } catch (error) {
             console.error("Erro ao deletar curso:", error);
@@ -125,7 +125,7 @@ export default function CursosAdmin() {
     // Função para adicionar curso com subcursos
     const handleAddCursoWithSubcourses = async () => {
         try {
-            const response = await fetch("https://crud-usuario.vercel.app/api/courses", {
+            const response = await fetch("https://api-only-mu.vercel.app/api/courses", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -70,7 +70,7 @@ const Admin = () => {
             }
 
             try {
-                const response = await fetch(`https://crud-usuario.vercel.app/api/users`, {
+                const response = await fetch(`https://api-only-mu.vercel.app/api/users`, {
                     method: "GET",
                 });
 
